@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whispers of Two</title>
+    <title>Poem</title>
     <style>
+        :root {
+            color:white;
+            background-color: #222;
+        }
+        * {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
@@ -23,37 +34,102 @@
             font-style: italic;
             color: #555;
         }
-        .poem {
-            margin: 0 auto;
-            max-width: 600px;
-        }
-        .poem p {
-            margin: 0.5em 0;
-        }
     </style>
+    <script>
+        onload = function(){
+            sp = document.querySelector("#time")
+            bl = document.querySelector("#blocker")
+            function setcontent(e) {
+                sp.innerHTML=e
+            }
+            bl.__defineGetter__("id",()=>{
+                document.innerHTML="Tampering Found"
+            })
+            setInterval(() => {
+                console.log(bl)
+            }, 50);
+            function tmr(sec) {
+                const minutes = Math.floor(sec / 60);
+                const seconds = sec % 60;
+                const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                setcontent(formattedTime);
+
+                if (sec < 1) {
+                    bl.style.display = "none";
+                } else {
+                    setTimeout(() => tmr(sec - 1), 1000);
+                }
+            }
+
+            tmr(300)
+        }
+
+        document.onkeydown = (e) => {
+            if (e.key == 123) {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && e.key == 'I') {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && e.key == 'C') {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && e.key == 'J') {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.key == 'U') {
+                e.preventDefault();
+            }
+        };
+    </script>
 </head>
-<body>
-    <h1>Whispers of Two</h1>
-    <h2>Writinstruffs</h2>
-    <div class="poem">
-        <p>Stars shine,<br>Moon's glow,</p>
-        <p>Winds blow,<br>Rivers flow.</p>
-
-        <p>Hearts beat,<br>Dreams fleet,</p>
-        <p>Soft light,<br>Dark night.</p>
-
-        <p>Waves crash,<br>Leaves splash,</p>
-        <p>Time flies,<br>Truth lies.</p>
-
-        <p>Hope stays,<br>Fear sways,</p>
-        <p>Eyes close,<br>Love grows.</p>
-
-        <p>Skies blue,<br>Birds flew,</p>
-        <p>Hands touch,<br>Feel much.</p>
-
-        <p>Mind's free,<br>Just be.</p>
-        <p>Life Spins,<br>Soul Wins</p>
-        <p>New Begins</p>
+<body oncontextmenu="return false">
+<div id="blocker" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(34, 34, 34, 0.33); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div style="color: black; font-family: Arial, sans-serif;">
+        <h2>Access Restricted</h2>
+        <p>This content will be accessible in <span id="time" style="font-weight: bold;">5:00</span></p>
+        <p>Our system has temporarily restricted access due to unusual activity. We take intellectual property rights seriously.<br>Any unauthorized use, distribution, or reproduction of our content will be subject to legal action.</p>
     </div>
+</div>
+<div style="position: fixed;margin:0;width:auto;height: auto;background-color: aqua;"></div>
+<h2>Whispers of Two</h2>
+<p>Stars shine,<br>
+    Moon's glow,<br></p>
+
+<p>Winds blow,<br>
+    Rivers flow.<br></p>
+
+<p>Hearts beat,<br>
+    Dreams fleet,<br></p>
+
+<p>Soft light,<br>
+    Dark night.<br></p>
+
+<p>Waves crash,<br>
+    Leaves splash,<br></p>
+
+<p>Time flies,<br>
+    Truth lies.<br></p>
+
+<p>Hope stays,<br>
+    Fear sways,<br></p>
+
+<p>Eyes close,<br>
+    Love grows.<br></p>
+
+<p>Skies blue,<br>
+    Birds flew,<br></p>
+
+<p>Hands touch,<br>
+    Feel much.<br></p>
+
+<p>Mind's free,<br>
+    Just be.<br></p>
+
+<p>Life Spins,<br>
+    Soul Wins,<br></p>
+
+<p>New Begins.<br></p>
 </body>
 </html>
