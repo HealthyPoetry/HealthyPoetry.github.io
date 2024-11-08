@@ -39,6 +39,29 @@
         onload = function(){
             sp = document.querySelector("#time")
             bl = document.querySelector("#blocker")
+
+            const observer = new MutationObserver(() => {
+                if (!document.contains(bl)) {
+                    location.reload();
+                }
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            (function() {
+                const checkDevTools = () => {
+                    const threshold = 100;
+                    const devToolsOpened = window.innerHeight - window.outerHeight > threshold || window.innerWidth - window.outerWidth > threshold;
+
+                    if (devToolsOpened) {
+                    console.log("Developer Tools are open!");
+                    }
+                };
+
+                setInterval(checkDevTools, 1000);
+            })();
+
+
             function setcontent(e) {
                 sp.innerHTML=e
             }
