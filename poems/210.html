@@ -48,17 +48,6 @@
 
             observer.observe(document.body, { childList: true, subtree: true });
 
-            var devtools = function() {};
-            devtools.toString = function() {
-                alert('NOPE!!')
-                return '-'
-            }
-
-            setInterval(()=>{
-                console.profile(devtools)
-                console.profileEnd(devtools)
-            }, 1000)
-
             function isConsoleOpen() {  
                 var startTime = new Date();
                 debugger;
