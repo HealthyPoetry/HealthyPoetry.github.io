@@ -48,22 +48,6 @@
 
             observer.observe(document.body, { childList: true, subtree: true });
 
-            function isConsoleOpen() {  
-                var startTime = new Date();
-                debugger;
-                var endTime = new Date();
-
-                return endTime - startTime > 100;
-            }
-
-            $(function() {
-                $(window).resize(function() {
-                    if(isConsoleOpen()) {
-                        alert("You're one sneaky dude, aren't you ?")
-                    }
-                });
-            });
-
             function setcontent(e) {
                 sp.innerHTML=e
             }
@@ -113,7 +97,7 @@
 <div id="blocker" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(34, 34, 34, 0.33); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; text-align: center;">
     <div style="color: black; font-family: Arial, sans-serif;">
         <h2>Access Restricted</h2>
-        <p>This content will be accessible in <span id="time" style="font-weight: bold;">5:00</span></p>
+        <p>This content will be accessible in <span id="time" style="font-weight: bold;">05:00</span></p>
         <p>Our system has temporarily restricted access due to unusual activity. We take intellectual property rights seriously.<br>Any unauthorized use, distribution, or reproduction of our content will be subject to legal action.</p>
     </div>
 </div>
