@@ -48,19 +48,32 @@
 
             observer.observe(document.body, { childList: true, subtree: true });
 
-            (function() {
-                const checkDevTools = () => {
-                    const threshold = 100;
-                    const devToolsOpened = window.innerHeight - window.outerHeight > threshold || window.innerWidth - window.outerWidth > threshold;
+            var devtools = function() {};
+            devtools.toString = function() {
+                alert('NOPE!!')
+                return '-'
+            }
 
-                    if (devToolsOpened) {
-                        console.log("Developer Tools are open!");
+            setInterval(()=>{
+                console.profile(devtools)
+                console.profileEnd(devtools)
+            }, 1000)
+
+            function isConsoleOpen() {  
+                var startTime = new Date();
+                debugger;
+                var endTime = new Date();
+
+                return endTime - startTime > 100;
+            }
+
+            $(function() {
+                $(window).resize(function() {
+                    if(isConsoleOpen()) {
+                        alert("You're one sneaky dude, aren't you ?")
                     }
-                };
-
-                setInterval(checkDevTools, 1000);
-            })();
-
+                });
+            });
 
             function setcontent(e) {
                 sp.innerHTML=e
